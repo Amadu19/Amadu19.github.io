@@ -1,0 +1,808 @@
+/* ===== ПЕРЕМЕННЫЕ ЦВЕТОВ ===== */
+:root {
+    --wine: #722F37;
+    --wine-dark: #4A1E24;
+    --wine-light: #8B3A42;
+    --burgundy: #800020;
+    --gold: #D4AF37;
+    --gold-light: #E8D48B;
+    --cream: #FDF8F0;
+    --cream-dark: #F5EDE0;
+    --black: #1a1a1a;
+    --text-dark: #2C1810;
+    --text-light: #6B4E3D;
+}
+
+/* ===== СБРОС СТИЛЕЙ ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--cream);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ===== КНОПКА МУЗЫКИ ===== */
+.music-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--wine);
+    color: white;
+    border: 2px solid var(--gold);
+    font-size: 1.3rem;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(114, 47, 55, 0.3);
+}
+
+.music-btn:hover {
+    background: var(--wine-dark);
+    transform: scale(1.1);
+}
+
+.music-btn.playing {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+    50% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+}
+
+/* ===== ДЕКОРАТИВНЫЕ СЕРДЕЧКИ ===== */
+.heart-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.heart-divider::before,
+.heart-divider::after {
+    content: '';
+    flex: 1;
+    max-width: 120px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+.heart-divider .heart {
+    color: var(--wine);
+    font-size: 1.5rem;
+    margin: 0 15px;
+}
+
+/* ===== ГЛАВНЫЙ ЭКРАН ===== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--wine-dark) 0%, var(--wine) 50%, var(--burgundy) 100%);
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.3;
+}
+
+.hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+.pre-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 0.95rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: var(--gold-light);
+}
+
+.main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.main-title .amp {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gold);
+    margin: 0 10px;
+}
+
+/* ===== УВЕЛИЧЕННАЯ ФАМИЛИЯ ===== */
+.surname {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.date-main {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+
+.location-main {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--gold-light);
+    margin-top: 10px;
+}
+
+/* ===== ФОТО В ШАПКЕ ===== */
+.hero-photo {
+    margin: 30px auto;
+    max-width: 320px;
+    position: relative;
+}
+
+.hero-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.hero-photo::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ===== ПРИВЕТСТВЕННЫЙ ТЕКСТ ===== */
+.welcome-text {
+    padding: 60px 20px;
+    background: var(--cream);
+    text-align: center;
+}
+
+.welcome-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.welcome-text-main {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 1.8;
+    max-width: 400px;
+    margin: 0 auto 20px;
+}
+
+.welcome-date {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--wine);
+    font-weight: 700;
+    margin-top: 20px;
+}
+
+/* ===== КАЛЕНДАРЬ ===== */
+.calendar-section {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, var(--wine-dark), var(--wine));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calendar-container {
+    background: var(--cream);
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 350px;
+    width: 100%;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.calendar-month {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    text-align: center;
+    color: var(--wine);
+    margin-bottom: 25px;
+    text-transform: lowercase;
+}
+
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.calendar-weekdays span {
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-light);
+    padding: 10px 5px;
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.calendar-days .day {
+    text-align: center;
+    padding: 12px 5px;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.calendar-days .day-empty {
+    padding: 12px 5px;
+}
+
+/* Выделяем день свадьбы - 22 августа (29-й элемент) */
+.calendar-days .day:nth-child(29) {
+    background: var(--wine);
+    color: white;
+    font-weight: 700;
+    position: relative;
+    box-shadow: 0 0 0 3px var(--gold);
+}
+
+.calendar-days .day:nth-child(29)::after {
+    content: '♥';
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    font-size: 0.7rem;
+    color: var(--wine);
+}
+
+.calendar-heart {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 2rem;
+    color: var(--wine);
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* ===== ФОТОГАЛЕРЕЯ ===== */
+.photos-gallery {
+    padding: 80px 20px;
+    background: var(--cream);
+    text-align: center;
+}
+
+.photos-gallery .section-title {
+    color: var(--wine);
+    margin-bottom: 50px;
+}
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(114, 47, 55, 0.2);
+    aspect-ratio: 3/4;
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.photo-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(114, 47, 55, 0.9), transparent);
+    color: white;
+    padding: 30px 15px 15px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .photo-overlay {
+    transform: translateY(0);
+}
+
+.photo-overlay p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+/* ===== ТАЙМЕР ===== */
+.timer-section {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, var(--wine-dark), var(--wine));
+    color: white;
+    text-align: center;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    color: white;
+}
+
+.timer-section .section-title {
+    color: var(--gold-light);
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.time-block {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--gold);
+    border-radius: 10px;
+    padding: 20px 15px;
+    min-width: 90px;
+    backdrop-filter: blur(10px);
+}
+
+.time-number {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--gold);
+}
+
+.time-label {
+    display: block;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 5px;
+    color: var(--gold-light);
+}
+
+/* ===== ТАЙМИНГ ===== */
+.timeline-section {
+    padding: 80px 20px;
+    background: var(--cream);
+    text-align: center;
+}
+
+.timeline-section .section-title {
+    color: var(--wine);
+}
+
+.timeline {
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold), var(--wine), var(--gold));
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.timeline-item:nth-child(odd) {
+    flex-direction: row;
+}
+
+.timeline-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.time-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--wine);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    border: 3px solid var(--gold);
+    z-index: 1;
+    box-shadow: 0 5px 20px rgba(114, 47, 55, 0.3);
+}
+
+.timeline-content {
+    flex: 1;
+    padding: 0 20px;
+    text-align: left;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    text-align: right;
+}
+
+.timeline-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--wine);
+    margin-bottom: 5px;
+}
+
+.timeline-content p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* ===== МЕСТО ПРОВЕДЕНИЯ ===== */
+.venue-section {
+    padding: 80px 20px;
+    background: var(--cream-dark);
+    text-align: center;
+}
+
+.venue-section .section-title {
+    color: var(--wine);
+}
+
+.venue-card {
+    max-width: 450px;
+    margin: 0 auto;
+    background: white;
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(114, 47, 55, 0.1);
+    border-top: 3px solid var(--gold);
+}
+
+.venue-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.venue-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--wine);
+    margin-bottom: 10px;
+}
+
+.venue-card p {
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.map-link {
+    display: inline-block;
+    color: var(--wine);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 3px;
+    transition: all 0.3s ease;
+}
+
+.map-link:hover {
+    color: var(--gold);
+    border-color: var(--wine);
+}
+
+/* ===== ДРЕСС-КОД ===== */
+.dresscode-section {
+    padding: 80px 20px;
+    background: var(--cream);
+    text-align: center;
+}
+
+.dresscode-section .section-title {
+    color: var(--wine);
+}
+
+.dresscode-subtitle {
+    max-width: 500px;
+    margin: 0 auto 40px;
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.color-palette {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.color-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.color-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.color-circle:hover {
+    transform: scale(1.15);
+}
+
+.color-item span {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+/* ===== ПОЖЕЛАНИЯ ===== */
+.wishes-section {
+    padding: 80px 20px;
+    background: var(--cream-dark);
+    text-align: center;
+}
+
+.wishes-section .section-title {
+    color: var(--wine);
+}
+
+.wishes-card {
+    max-width: 450px;
+    margin: 0 auto;
+    background: white;
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(114, 47, 55, 0.1);
+}
+
+.wishes-card p {
+    margin-bottom: 15px;
+    color: var(--text-dark);
+    font-size: 1rem;
+}
+
+.wishes-card p:last-child {
+    margin-bottom: 0;
+}
+
+/* ===== ФУТЕР ===== */
+.footer {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, var(--wine-dark), var(--wine));
+    color: white;
+    text-align: center;
+}
+
+.footer .heart-divider::before,
+.footer .heart-divider::after {
+    background: linear-gradient(to right, transparent, var(--gold-light), transparent);
+}
+
+.footer .heart-divider .heart {
+    color: var(--gold);
+}
+
+.footer-names {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin: 20px 0 10px;
+}
+
+.footer-date {
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    color: var(--gold-light);
+    margin-bottom: 20px;
+}
+
+.footer-love {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--gold-light);
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2.5rem;
+    }
+
+    .surname {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .time-circle {
+        width: 65px;
+        height: 65px;
+        font-size: 0.95rem;
+    }
+
+    .timeline::before {
+        left: 32px;
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(even) {
+        flex-direction: row;
+    }
+
+    .timeline-content,
+    .timeline-item:nth-child(even) .timeline-content {
+        text-align: left;
+    }
+
+    .time-number {
+        font-size: 2rem;
+    }
+
+    .time-block {
+        min-width: 75px;
+        padding: 15px 10px;
+    }
+
+    .gallery-container {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+
+    .calendar-container {
+        padding: 20px;
+    }
+
+    .calendar-month {
+        font-size: 1.5rem;
+    }
+
+    .calendar-days .day {
+        padding: 8px 3px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 2rem;
+    }
+
+    .surname {
+        font-size: 1.8rem;
+    }
+
+    .countdown {
+        gap: 10px;
+    }
+
+    .time-block {
+        min-width: 70px;
+    }
+
+    .color-circle {
+        width: 50px;
+        height: 50px;
+    }
+
+    .calendar-weekdays span {
+        font-size: 0.75rem;
+        padding: 5px 2px;
+    }
+
+    .calendar-days .day {
+        padding: 6px 2px;
+        font-size: 0.8rem;
+    }
+}
+
+/* ===== АНИМАЦИИ ПОЯВЛЕНИЯ ===== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}

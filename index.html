@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Алан & Александра Акчины | 22.08.2026</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Аудио плеер -->
+    <audio id="bgMusic" loop>
+        <source src="media/music.mp3" type="audio/mpeg">
+    </audio>
+    <button id="musicToggle" class="music-btn" title="Включить/выключить музыку">
+        🎵
+    </button>
+
+    <!-- Главный экран с фото -->
+    <header class="hero">
+        <div class="heart-divider top">
+            <span class="heart">♥</span>
+        </div>
+        
+        <p class="pre-title">Мы приглашаем вас на нашу свадьбу</p>
+        
+        <h1 class="main-title">Алан <span class="amp">&</span> Александра</h1>
+        <p class="surname">Акчины</p>
+        
+        <!-- Детская фотография прямо под именами -->
+        <div class="hero-photo">
+            <img src="media/photo.jpg" alt="Алан и Александра в детстве">
+        </div>
+        
+        <div class="heart-divider bottom">
+            <span class="heart">♥</span>
+        </div>
+        
+        <p class="date-main">22 августа 2026</p>
+        <p class="location-main">с. Улаган</p>
+    </header>
+
+    <!-- Приветственный текст -->
+    <section class="welcome-text">
+        <p class="welcome-intro">Дорогие друзья и близкие,</p>
+        <p class="welcome-text-main">Мы приглашаем вас разделить с нами наше свадебное торжество, которое состоится</p>
+        <p class="welcome-date">22.08.2026</p>
+    </section>
+
+    <!-- Календарь -->
+    <section class="calendar-section">
+        <div class="calendar-container">
+            <h3 class="calendar-month">август</h3>
+            <div class="calendar-weekdays">
+                <span>пн</span>
+                <span>вт</span>
+                <span>ср</span>
+                <span>чт</span>
+                <span>пт</span>
+                <span>сб</span>
+                <span>вс</span>
+            </div>
+            <div class="calendar-days">
+                <span class="day-empty"></span>
+                <span class="day-empty"></span>
+                <span class="day-empty"></span>
+                <span class="day-empty"></span>
+                <span class="day-empty"></span>
+                <span class="day-empty"></span>
+                <span class="day">1</span>
+                <span class="day">2</span>
+                <span class="day">3</span>
+                <span class="day">4</span>
+                <span class="day">5</span>
+                <span class="day">6</span>
+                <span class="day">7</span>
+                <span class="day">8</span>
+                <span class="day">9</span>
+                <span class="day">10</span>
+                <span class="day">11</span>
+                <span class="day">12</span>
+                <span class="day">13</span>
+                <span class="day">14</span>
+                <span class="day">15</span>
+                <span class="day">16</span>
+                <span class="day">17</span>
+                <span class="day">18</span>
+                <span class="day">19</span>
+                <span class="day">20</span>
+                <span class="day">21</span>
+                <span class="day">22</span>
+                <span class="day">23</span>
+                <span class="day">24</span>
+                <span class="day">25</span>
+                <span class="day">26</span>
+                <span class="day">27</span>
+                <span class="day">28</span>
+                <span class="day">29</span>
+                <span class="day">30</span>
+                <span class="day">31</span>
+            </div>
+            <div class="calendar-heart">
+                <span>♥</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Фотогалерея (3 фото) -->
+    <section class="photos-gallery">
+        <h2 class="section-title">Наша история</h2>
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="media/photo1.jpg" alt="Фото 1">
+                <div class="photo-overlay">
+                    <p>Начало пути</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="media/photo2.jpg" alt="Фото 2">
+                <div class="photo-overlay">
+                    <p>Вместе</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="media/photo3.jpg" alt="Фото 3">
+                <div class="photo-overlay">
+                    <p>Любовь</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Таймер -->
+    <section class="timer-section">
+        <h2 class="section-title">До нашего дня осталось</h2>
+        <div class="countdown">
+            <div class="time-block">
+                <span id="days" class="time-number">00</span>
+                <span class="time-label">дней</span>
+            </div>
+            <div class="time-block">
+                <span id="hours" class="time-number">00</span>
+                <span class="time-label">часов</span>
+            </div>
+            <div class="time-block">
+                <span id="minutes" class="time-number">00</span>
+                <span class="time-label">минут</span>
+            </div>
+            <div class="time-block">
+                <span id="seconds" class="time-number">00</span>
+                <span class="time-label">секунд</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Тайминг дня -->
+    <section class="timeline-section">
+        <h2 class="section-title">Программа дня</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="time-circle">10:00</div>
+                <div class="timeline-content">
+                    <h3>Алтай той</h3>
+                    <p>Традиционное празднование</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time-circle">13:00</div>
+                <div class="timeline-content">
+                    <h3>Церемония бракосочетания</h3>
+                    <p>Торжественная регистрация</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time-circle">15:00</div>
+                <div class="timeline-content">
+                    <h3>Свадебный банкет</h3>
+                    <p>Праздничный ужин и веселье</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Место проведения -->
+    <section class="venue-section">
+        <h2 class="section-title">Место проведения</h2>
+        <div class="venue-card">
+            <div class="venue-icon">📍</div>
+            <h3>Банкетный зал «Эрjине»</h3>
+            <p>с. Улаган, ул. Пионерская, д. 17</p>
+            <a href="https://yandex.ru/maps/?text=с.+Улаган,+ул.+Пионерская,+д.+17" target="_blank" class="map-link">
+                Открыть на карте →
+            </a>
+        </div>
+    </section>
+
+   <!-- Дресс-код -->
+<section class="dresscode-section">
+    <h2 class="section-title">Дресс-код</h2>
+    <p class="dresscode-subtitle">Мы стараемся сделать праздник красивым и стильным, и будем рады, если вы поддержите цветовую гамму нашей свадьбы</p>
+    <div class="color-palette">
+        <div class="color-item">
+            <div class="color-circle" style="background-color: #4A1E24;"></div>
+            <span>Тёмное вино</span>
+        </div>
+        <div class="color-item">
+            <div class="color-circle" style="background-color: #722F37;"></div>
+            <span>Бордо</span>
+        </div>
+        <div class="color-item">
+            <div class="color-circle" style="background-color: #8B3A42;"></div>
+            <span>Винный</span>
+        </div>
+        <div class="color-item">
+            <div class="color-circle" style="background-color: #A86868;"></div>
+            <span>Пыльная роза</span>
+        </div>
+        <div class="color-item">
+            <div class="color-circle" style="background-color: #E8D4B8;"></div>
+            <span>Бежевый</span>
+        </div>
+    </div>
+</section>
+
+    <!-- Пожелания -->
+    <section class="wishes-section">
+        <h2 class="section-title">Пожелания</h2>
+        <div class="wishes-card">
+            <p>Ваше присутствие — лучший подарок для нас! 🎁</p>
+            <p>Если вы хотите сделать нам подарок, мы будем рады конверту 💌</p>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="heart-divider">
+            <span class="heart">♥</span>
+        </div>
+        <p class="footer-names">Алан & Александра</p>
+        <p class="footer-date">22.08.2026</p>
+        <p class="footer-love">С любовью и нетерпением ждём вас!</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
